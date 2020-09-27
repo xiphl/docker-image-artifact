@@ -1,0 +1,23 @@
+{
+  "name": "docker-image-artifact",
+  "version": "1.0.0",
+  "description": "Package for github action image artifact",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "github-actions",
+    "docker",
+    "image",
+    "artifact"
+  ],
+  "author": "Ishwor Khadka",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/artifact": "^0.4",
+    "child_process": "^1.0",
+    "zlib": "^1.0"
+  }
+}
