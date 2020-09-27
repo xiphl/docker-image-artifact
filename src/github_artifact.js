@@ -21,7 +21,7 @@ exports.upload = async function(name, file, retentionDays = 0) {
         throw new Error(`Artifact Upload failed: ${name} - File does not exist: ${file}`);
     }
 
-    const uploadResponse = await getArtifactClient().upload(
+    const uploadResponse = await getArtifactClient().uploadArtifact(
         name, [file], path.dirname(file), { retentionDays: retentionDays }
     );
     
@@ -42,7 +42,7 @@ exports.download = async function(name, basedir) {
         throw new Error(`Artifact Upload failed: ${name} - Directory does not exist: ${basedir}`);
     }
 
-    const downloadResponse = await getArtifactClient().download(name, basedir);
+    const downloadResponse = await getArtifactClient().downloadArtifact(name, basedir);
 
     return downloadResponse.downloadPath;
 }

@@ -1,11 +1,14 @@
 const docker = require('./docker');
 const artifact = require('./github_artifact');
 
+const path = require('path');
+const os = require('os');
+
 const INVALID_CHARS = /[\s><:"|*?/\\]/g;
 
 const resolvePackageName = (imageName) => imageName.replace(INVALID_CHARS, '_');
 
-const resolveArtifactName = (imageName) => `action_image_artifact_${sanitiseName(imageName)}`;
+const resolveArtifactName = (imageName) => `action_image_artifact_${resolvePackageName(imageName)}`;
 
 /**
  * @param {string} image 
@@ -39,7 +42,7 @@ exports.download = async function(image) {
     const downloadDir = await artifact.download(resolveArtifactName(image), os.tmpdir());
     
     const imagePackageName = resolvePackageName(image);    
-    await docker.loadImage(downloadDir, imagePackageName);  
+    await docker.loadImage(path.join(downloadDir, imagePackageName));  
 
     return path.join(downloadDir, imagePackageName);
 }
