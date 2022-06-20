@@ -20,6 +20,7 @@ const resolveArtifactName = (imageName) => `action_image_artifact_${resolvePacka
  *      `image_artifact_foo_latest`. In short we will have an artifact like,
  *             image_artifact_foo_latest[foo_latest]
  */
+console.error(`packageimage`);
 exports.upload = async function(image) {
     const packagePath = await docker.packageImage(image, path.join(os.tmpdir(), resolvePackageName(image)));
     
