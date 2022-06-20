@@ -5,3 +5,4 @@ Module providing functionality for uploading and downloading docker images in a 
 
 It exposes two public methods from ![main script](https://github.com/ishworkh/docker-image-artifact/blob/master/src/image_artifact.js) namely `upload` and `download`.
 
+This fork is purely for debugging purposes
