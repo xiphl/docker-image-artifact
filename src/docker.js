@@ -12,7 +12,7 @@ const dockerLoadCmd = (input) => `docker load -i ${input}`;
  */
 exports.packageImage = async function(image, output) {
     return await new Promise((resolve, reject) => {
-        exec(dockerSaveCmd(image, output), (err, _, stdErr) => {
+        exec(dockerSaveCmd(image, output), {maxBuffer: 1024 * 500}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(error);

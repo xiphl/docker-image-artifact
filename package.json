@@ -1,5 +1,5 @@
 {
-  "name": "docker-image-artifact",
+  "name": "@skipphl/docker-image-artifact",
   "version": "1.0.1",
   "description": "Package for github action image artifact",
   "main": "./src/image_artifact.js",
@@ -19,5 +19,13 @@
     "@actions/artifact": "^0.4",
     "child_process": "^1.0",
     "zlib": "^1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiphl/docker-image-artifact.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xiphl/docker-image-artifact/issues"
+  },
+  "homepage": "https://github.com/xiphl/docker-image-artifact#readme"
 }
