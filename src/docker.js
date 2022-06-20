@@ -12,7 +12,7 @@ const dockerLoadCmd = (input) => `docker load -i ${input}`;
  */
 exports.packageImage = async function(image, output) {
     return await new Promise((resolve, reject) => {
-        exec(dockerSaveCmd(image, output), {maxBuffer: 1024 * 1024}, (err, _, stdErr) => {
+        exec(dockerSaveCmd(image, output), {maxBuffer: 5 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(error);
@@ -33,7 +33,7 @@ exports.loadImage = async function(input) {
     }
 
     return await new Promise((resolve, reject) => {
-        exec(dockerLoadCmd(input), {maxBuffer: 1024 * 1024}, (err, _, stdErr) => {
+        exec(dockerLoadCmd(input), {maxBuffer: 5 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(error);
