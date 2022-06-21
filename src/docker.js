@@ -18,7 +18,7 @@ exports.packageImage = async function(image, output) {
             if (error) {
                 reject(`i dunno why ${error}, the image is ${image} and output is ${output}`);
             } else {
-                resolve('docker: resolved: ',output);
+                resolve(output);
             }
         });
     });
