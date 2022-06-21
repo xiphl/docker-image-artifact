@@ -4,7 +4,7 @@ const { existsSync } = require('fs');
 const dockerSaveCmd = (image, output) => `docker save ${image} -o ${output}`;
 
 const dockerLoadCmd = (input) => `docker load -i ${input}`;
-console.log(`hey`);
+console.log(`hey2`);
 /**
  * 
  * @param {string} image 
@@ -15,7 +15,7 @@ exports.packageImage = async function(image, output) {
         exec(dockerSaveCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
-                reject(error);
+                reject(`i dunno why ${error}`);
             } else {
                 resolve(output);
             }
