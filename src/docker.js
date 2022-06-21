@@ -4,7 +4,7 @@ const { existsSync } = require('fs');
 const dockerSaveCmd = (image, output) => `docker save ${image} -o ${output}`;
 
 const dockerLoadCmd = (input) => `docker load -i ${input}`;
-
+console.log(`hey`);
 /**
  * 
  * @param {string} image 
