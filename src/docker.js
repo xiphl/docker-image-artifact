@@ -20,7 +20,8 @@ exports.packageImage = async function(image, output) {
             } else {
                 console.log(`the output of ls is:`);
                 console.log(`we expect image to be ${image}`);
-                console.log(`${output}`);
+                console.log(`output found is ${output}`);
+                console.log(`output modified is ${output.split(':')[0]+':head'}`);
                 resolve(output);
             }
         });
