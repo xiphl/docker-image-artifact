@@ -1,4 +1,4 @@
-const { spawn } = require('child_process');
+const { exec } = require('child_process');
 const { existsSync } = require('fs');
 
 const dockerSaveCmd = (image, output) => `docker save ${image} -o ${output}`;
@@ -12,7 +12,7 @@ const dockerLoadCmd = (input) => `docker load -i ${input}`;
  */
 exports.packageImage = async function(image, output) {
     return await new Promise((resolve, reject) => {
-        spawn(dockerSaveCmd(image, output), (err, _, stdErr) => {
+        exec(dockerSaveCmd(image, output), {maxBuffer: 1024 * 512}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(error);
@@ -33,7 +33,7 @@ exports.loadImage = async function(input) {
     }
 
     return await new Promise((resolve, reject) => {
-        spawn(dockerLoadCmd(input), (err, _, stdErr) => {
+        exec(dockerLoadCmd(input), {maxBuffer: 1024 * 512}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(error);
