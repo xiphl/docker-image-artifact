@@ -12,13 +12,15 @@ console.log(`hey3`);
  * @param {string} output 
  */
 exports.packageImage = async function(image, output) {
-    exec(preCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
-        error = err || stdErr;
-        if (error) {
-            reject(`${error}`);
-        } else {
-            resolve(output);
-        }
+    await new Promise((resolve, reject) => {
+        exec(preCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
+            error = err || stdErr;
+            if (error) {
+                reject(`${error}`);
+            } else {
+                resolve(output);
+            }
+        });
     });
     return await new Promise((resolve, reject) => {
         exec(dockerSaveCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
