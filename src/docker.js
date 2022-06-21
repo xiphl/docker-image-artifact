@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const { existsSync } = require('fs');
 
 const preCmd = () => `docker image ls`;
-const dockerSaveCmd = (image, output) => `docker save ${image[0]} -o ${output}`;
+const dockerSaveCmd = (image, output) => `docker save ${image} -o ${output}`;
 
 const dockerLoadCmd = (input) => `docker load -i ${input}`;
 console.log(`hey3`);
