@@ -22,9 +22,11 @@ const resolveArtifactName = (imageName) => `action_image_artifact_${resolvePacka
  */
 console.error(`packageimage`);
 exports.upload = async function(image) {
+    console.log(`image_artifact: image is ${image} and resolvePackageName is ${path.join(os.tmpdir(), resolvePackageName(image))}`);
     const packagePath = await docker.packageImage(image, path.join(os.tmpdir(), resolvePackageName(image)));
     
     const artifactName = resolveArtifactName(image);
+    console.log(`image_artifact: artifactName is ${artifactName} and package path is ${packagePath}`);
     await artifact.upload(artifactName, packagePath);
 
     return artifactName;

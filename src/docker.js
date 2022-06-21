@@ -12,27 +12,13 @@ console.log(`hey3`);
  * @param {string} output 
  */
 exports.packageImage = async function(image, output) {
-    await new Promise((resolve, reject) => {
-        exec(preCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
-            error = err || stdErr;
-            if (error) {
-                reject(`rejected1 ${error}`);
-            } else {
-                console.log(`the output of ls is:`);
-                console.log(`we expect image to be ${image}`);
-                console.log(`output found is ${output}`);
-                console.log(`output modified is ${output.split(':')[0]+':head'}`);
-                resolve('resolved1 ',output);
-            }
-        });
-    });
     return await new Promise((resolve, reject) => {
         exec(dockerSaveCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
                 reject(`i dunno why ${error}`);
             } else {
-                resolve(output);
+                resolve('docker: resolved: ',output);
             }
         });
     });
