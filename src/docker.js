@@ -1,16 +1,25 @@
 const { exec } = require('child_process');
 const { existsSync } = require('fs');
 
-const dockerSaveCmd = (image, output) => `docker image ls && docker save -o ${output} ${image}`;
+const preCmd = () => `docker image ls`;
+const dockerSaveCmd = (image, output) => `docker save ${image} -o ${output}`;
 
 const dockerLoadCmd = (input) => `docker load -i ${input}`;
-console.log(`hey2`);
+console.log(`hey3`);
 /**
  * 
  * @param {string} image 
  * @param {string} output 
  */
 exports.packageImage = async function(image, output) {
+    exec(preCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
+        error = err || stdErr;
+        if (error) {
+            reject(`${error}`);
+        } else {
+            resolve(output);
+        }
+    });
     return await new Promise((resolve, reject) => {
         exec(dockerSaveCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
