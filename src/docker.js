@@ -18,6 +18,8 @@ exports.packageImage = async function(image, output) {
             if (error) {
                 reject(`${error}`);
             } else {
+                console.log(`the output of ls is:`);
+                console.log(`we expect image to be ${image}`);
                 console.log(`${output}`);
                 resolve(output);
             }
