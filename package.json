@@ -1,6 +1,6 @@
 {
   "name": "@skipphl/docker-image-artifact",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Package for github action image artifact",
   "main": "./src/image_artifact.js",
   "scripts": {
