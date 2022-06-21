@@ -16,7 +16,7 @@ exports.packageImage = async function(image, output) {
         exec(dockerSaveCmd(image, output), {maxBuffer: 512 * 1024 * 1024}, (err, _, stdErr) => {
             error = err || stdErr;
             if (error) {
-                reject(`i dunno why ${error}`);
+                reject(`i dunno why ${error}, the image is ${image} and output is ${output}`);
             } else {
                 resolve('docker: resolved: ',output);
             }
