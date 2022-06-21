@@ -18,6 +18,7 @@ exports.packageImage = async function(image, output) {
             if (error) {
                 reject(`${error}`);
             } else {
+                console.log(`${output}`);
                 resolve(output);
             }
         });
